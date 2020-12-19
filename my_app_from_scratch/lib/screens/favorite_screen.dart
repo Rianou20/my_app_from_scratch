@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_app_from_scratch/common/data.dart';
 import 'package:my_app_from_scratch/models/favorite_model.dart';
 
 import 'package:my_app_from_scratch/common/home_list.dart';
