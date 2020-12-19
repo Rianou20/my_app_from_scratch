@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app_from_scratch/common/data.dart';
 import 'package:my_app_from_scratch/models/favorite_model.dart';
 
 import 'package:my_app_from_scratch/common/home_list.dart';
@@ -36,16 +37,17 @@ class Favorite extends StatelessWidget {
                                   favModel.favList[index].countdown,
                                 ),
                                 Padding(
-                          padding: const EdgeInsets.all(7.0),
-                          child: GestureDetector(
-                              child: Icon(Icons.favorite,
-                                color: Colors.red,
-                                size: 32,
-                              ),
-                              onTap: () {                              
-                                favModel.removeOfFavorite(index);
-                              }),
-                       ),
+                                  padding: const EdgeInsets.all(7.0),
+                                  child: GestureDetector(
+                                      child: Icon(
+                                        Icons.favorite,
+                                        color: Colors.red,
+                                        size: 32,
+                                      ),
+                                      onTap: () {
+                                        favModel.removeOfFavorite(index, index);
+                                      }),
+                                ),
                               ],
                             ),
                           )
