@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:my_app_from_scratch/common/data.dart';
 import 'package:my_app_from_scratch/models/favorite_model.dart';
-import 'package:my_app_from_scratch/models/home_model.dart';
 import 'package:provider/provider.dart';
 import './favorite_screen.dart';
 import 'package:my_app_from_scratch/common/home_list.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final List<bool> isInFav = List<bool>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,56 +36,56 @@ class Home extends StatelessWidget {
           shrinkWrap: false,
           itemCount: itemData.length,
           itemBuilder: (context, index) {
-            return _MyListItem(index);
+            isInFav.add(false);
+            return Row(
+              children: [
+                Flexible(
+                  child: ImageObject(
+                    itemData[index].imageURL,
+                  ),
+                  flex: 1,
+                ),
+                Flexible(
+                  flex: 1,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      TextObject(
+                          itemData[index].title, itemData[index].description),
+                      CountObject(
+                        itemData[index].countdown,
+                      ),
+                      Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: GestureDetector(
+                              child: Icon(
+                                isInFav.elementAt(index)
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: isInFav[index] ? Colors.red : null,
+                                size: 32,
+                              ),
+                              onTap: () {                              
+                                isInFav[index] ? null : Provider.of<FavModel>(context,
+                                            listen: false)
+                                        .addInFavorite(
+                                        itemData[index].title,
+                                        itemData[index].description,
+                                        itemData[index].countdown,
+                                        itemData[index].imageURL,
+                                      );
+                                      isInFav[index] ? null :
+                                setState(() {
+                                  isInFav[index] = true;
+                                });
+                              }),
+                       ),
+                    ],
+                  ),
+                )
+              ],
+            );
           }),
-    );
-  }
-}
-
-class _MyListItem extends StatelessWidget {
-  final int index;
-  _MyListItem(this.index, {Key key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    var item = context.select<HomeModel, Item>((list) => list.getByPosition(index),
-    );
-    var isInFav =context.select<FavModel, bool>((fav) => fav.items.contains(item),
-    );
-    return Row(
-      children: [
-        Flexible(
-          child: ImageObject(
-            itemData[index].imageURL,
-          ),
-          flex: 1,
-        ),
-        Flexible(
-          flex: 1,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              TextObject(itemData[index].title, itemData[index].description),
-              CountObject(
-                itemData[index].countdown,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(7.0),
-                child: GestureDetector(
-                    child: Icon(
-                      isInFav ? Icons.favorite : Icons.favorite_border,
-                      color: isInFav ? Colors.red : null,
-                      size: 32,
-                    ),
-                    onTap: () {
-                      isInFav
-                          ? context.read<FavModel>().remove(item)
-                          : context.read<FavModel>().add(item);
-                    }),
-              ),
-            ],
-          ),
-        )
-      ],
     );
   }
 }
