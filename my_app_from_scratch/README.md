@@ -1,4 +1,4 @@
-# my_app_from_scratch
+# Hora
 
 A new Flutter project.
 

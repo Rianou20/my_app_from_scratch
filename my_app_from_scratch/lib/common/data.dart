@@ -1,4 +1,4 @@
-import 'package:my_app_from_scratch/models/home_model.dart';
+import 'package:Hora/models/home_model.dart';
 
 dynamic itemData = [
 

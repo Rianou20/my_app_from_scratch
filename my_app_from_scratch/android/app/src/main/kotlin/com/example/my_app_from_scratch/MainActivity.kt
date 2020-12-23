@@ -1,4 +1,4 @@
-package com.example.my_app_from_scratch
+package com.example.hora
 
 import io.flutter.embedding.android.FlutterActivity
 

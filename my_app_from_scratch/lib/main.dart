@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_app_from_scratch/screens/favorite_screen.dart';
-import 'package:my_app_from_scratch/screens/parameters_screen.dart';
+import 'package:Hora/screens/favorite_screen.dart';
+import 'package:Hora/screens/parameters_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 
@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       Provider(create: (context) => BottomNavigationBarModel())
       ],
       child: MaterialApp(
+        title: 'Hora',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,

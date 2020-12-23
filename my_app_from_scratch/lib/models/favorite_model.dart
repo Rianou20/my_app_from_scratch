@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:my_app_from_scratch/common/data.dart';
-import 'package:my_app_from_scratch/models/home_model.dart';
-import 'package:my_app_from_scratch/screens/favorite_screen.dart';
+import 'package:Hora/common/data.dart';
+import 'package:Hora/models/home_model.dart';
+import 'package:Hora/screens/favorite_screen.dart';
 
 class FavModel extends ChangeNotifier {
   List<Item> favList = [];

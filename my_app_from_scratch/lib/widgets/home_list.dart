@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 
-import 'package:my_app_from_scratch/models/home_model.dart';
+import 'package:Hora/models/home_model.dart';
 
 
 class ImageObject extends StatelessWidget {

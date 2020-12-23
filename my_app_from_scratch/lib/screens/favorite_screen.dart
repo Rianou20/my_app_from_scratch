@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_app_from_scratch/models/favorite_model.dart';
+import 'package:Hora/models/favorite_model.dart';
 
-import 'package:my_app_from_scratch/widgets/home_list.dart';
+import 'package:Hora/widgets/home_list.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 

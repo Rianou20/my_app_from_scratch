@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_app_from_scratch/common/data.dart';
-import 'package:my_app_from_scratch/models/favorite_model.dart';
+import 'package:Hora/common/data.dart';
+import 'package:Hora/models/favorite_model.dart';
 import 'package:provider/provider.dart';
-import 'package:my_app_from_scratch/widgets/home_list.dart';
+import 'package:Hora/widgets/home_list.dart';
 
 class Home extends StatelessWidget {
   @override
