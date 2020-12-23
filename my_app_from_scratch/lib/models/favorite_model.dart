@@ -1,25 +1,40 @@
 import 'package:flutter/foundation.dart';
+import 'package:my_app_from_scratch/common/data.dart';
 import 'package:my_app_from_scratch/models/home_model.dart';
+import 'package:my_app_from_scratch/screens/favorite_screen.dart';
 
 class FavModel extends ChangeNotifier {
   List<Item> favList = [];
   List<bool> isInFav = [];
-  
+  List<EmptyItem> emptyList = [];
+  Item item = Item();
 
-  addInFavorite(title, description, countdown, imageURL, index){
-    Item item = Item(title: title, description: description, countdown:countdown, imageURL: imageURL);
+  addInFavorite(item, index, index2) { 
     favList.add(item);
-    isInFav[index] = true;
+    itemData[index].isFavorite = true;
+    emptyList.removeAt(index2);
     notifyListeners();
   }
 
-  removeOfFavorite(int index, int index2){
+  removeOfFavorite(int index, Object emptyItem, Item item) {
     favList.removeAt(index);
-    isInFav[index2] = false;
+    emptyList.add(emptyItem);
+
+    for(int i = 0;i<itemData.length;i++){
+      if(itemData[i].id == item.id){
+        itemData[i].isFavorite = false;
+        break;
+      }
+    }
     notifyListeners();
   }
 
-  implement(){
+  addEmpty(Object emptyItem) {
+    emptyList.add(emptyItem);
+    notifyListeners();
+  }
+
+  implement() {
     isInFav.add(false);
   }
 }

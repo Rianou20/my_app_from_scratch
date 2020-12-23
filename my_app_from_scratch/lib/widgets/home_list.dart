@@ -11,8 +11,10 @@ class ImageObject extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: new EdgeInsets.only(top: 5.0, left: 0.0),
+      //margin: new EdgeInsets.only(top: 5.0, left: 0.0),
       child: CachedNetworkImage(
+        height: MediaQuery.of(context).size.height/5,
+        width: MediaQuery.of(context).size.width/2,
         imageUrl: itemData,
         fit: BoxFit.cover,
       ),
@@ -75,38 +77,7 @@ class CountObject extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
-          emptyWidget: Center(child: Text('Va sur Netflix !')),
+          emptyWidget: Center(child: Text('Va sur Netflix!')),
         ));
-  }
-}
-
-class FavWidget extends StatefulWidget {
-  final List<Item>savedItems;
-  final Object item;
-
-  FavWidget(this.savedItems, this.item);
-  @override
-  _FavWidgetState createState() => _FavWidgetState();
-}
-
-class _FavWidgetState extends State<FavWidget> { 
-  @override
-  Widget build(BuildContext context) {
-    bool isSaved = widget.savedItems.contains(widget.item);
-    return Padding(
-      padding: const EdgeInsets.all(7.0),
-      child: GestureDetector(
-        child: Icon(
-          isSaved ? Icons.favorite : Icons.favorite_border,
-          color: isSaved ? Colors.red : null,
-          size: 32,
-        ),
-        onTap: () {
-            
-              //Provider.of<ItemAdd>(context).addItem(widget.savedItems[index].title, );
-              isSaved = true;
-        },
-      ),
-    );
   }
 }

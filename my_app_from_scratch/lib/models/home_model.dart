@@ -4,6 +4,7 @@ class Item {
   final String imageURL;
   final int countdown;
   final int id;
+  bool isFavorite;
 
   Item({
     this.title,
@@ -11,5 +12,6 @@ class Item {
     this.imageURL,
     this.countdown,
     this.id,
+    this.isFavorite,
   });
 }
